@@ -15,10 +15,13 @@ return {
 			dap.listeners.before.event_exited["dapui_config"] = function()
 				dapui.close()
 			end
-		end
+		end,
 	},
 	{
 		"mfussenegger/nvim-dap",
+		keys = {
+			{ "<leader>db", "<cmd> DapToggleBreakpoint <CR>", desc = "Toggle Breakpoint" },
+		},
 	},
 	{
 		"mfussenegger/nvim-dap-python",
@@ -34,3 +37,4 @@ return {
 		end,
 	},
 }
+
