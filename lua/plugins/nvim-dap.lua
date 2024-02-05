@@ -20,7 +20,11 @@ return {
 	{
 		"mfussenegger/nvim-dap",
 		keys = {
-			{ "<leader>db", "<cmd> DapToggleBreakpoint <CR>", desc = "Toggle Breakpoint" },
+			{
+				"<leader>db",
+				"<cmd> DapToggleBreakpoint <CR>",
+				desc = "Toggle Breakpoint",
+			},
 		},
 	},
 	{
@@ -30,11 +34,18 @@ return {
 			"mfussenegger/nvim-dap",
 			"rcarriga/nvim-dap-ui",
 		},
+		keys = {
+			{
+				"<leader>dpr",
+				function()
+					require("dap").continue()
+				end,
+				desc = "Continue Debug",
+			},
+		},
 		config = function(_, opts)
-			local path = "~/.local/share/nvim/mason/packages/debugpy/venv/bin/python"
+			local path = os.getenv("VIRTUAL_ENV") or "~/.local/share/nvim/mason/packages/debugpy/venv/bin/python"
 			require("dap-python").setup(path)
-			require("core.utils").load_mappings("dap_python")
 		end,
 	},
 }
-
